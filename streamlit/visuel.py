@@ -5,11 +5,17 @@ import pandas as pd
 def poids(df):
   return px.bar(df, x="Feature", y="Coefficient", title="Impact des variables sur le churn (régression logistique)")
 
-def ROC(model):
-  # Création de la figure
+def ROC(model,df):
+
+  y_test = train_test(df)[3]
+  y_pred_proba = best_model.predict_proba(X_test)[:,1]
+  
+  fpr, tpr, _ = roc_curve(y_test, y_pred_proba)
+  roc_auc = roc_auc_score(y_test, y_pred_proba)
+  
   fig = go.Figure()
   
-  # Ajouter la courbe ROC
+  
   fig.add_trace(go.Scatter(
       x=fpr,
       y=tpr,
@@ -18,7 +24,7 @@ def ROC(model):
       line=dict(color='blue', width=2)
   ))
   
-  # Ajouter la diagonale (cas aléatoire)
+  
   fig.add_trace(go.Scatter(
       x=[0,1],
       y=[0,1],
@@ -27,7 +33,7 @@ def ROC(model):
       showlegend=False
   ))
   
-  # Mettre les labels et titre
+ 
   fig.update_layout(
       title="ROC Curve",
       xaxis_title="False Positive Rate",
@@ -36,5 +42,5 @@ def ROC(model):
       height=600
   )
   
-  # Afficher le graphique interactif
+ 
   return fig

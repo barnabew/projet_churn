@@ -3,7 +3,7 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 from data import chargement_donnée
-from ml import best_model
+from ml import reg_lineaire
 
 st.title("📈 Analyse des données du churn")
 
@@ -20,7 +20,7 @@ col3.metric("Facture moyenne (€)", f"{df['MonthlyCharges'].mean():.2f}")
 
 st.markdown("---")
 st.subheader("Répartition du churn par type de contrat")
-st.plotly_chart(ROC(best_model(df),df), use_container_width=True)
+st.plotly_chart(ROC(reg_lineaire(df),df), use_container_width=True)
 
 st.subheader("Distribution de la facture mensuelle")
-st.plotly_chart(RECALL(best_model(df),df), use_container_width=True)
+st.plotly_chart(RECALL(reg_lineaire(df),df), use_container_width=True)

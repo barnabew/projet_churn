@@ -17,7 +17,7 @@ def modeles(df):
 
   X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
   
-  # Liste des modèles
+
   models = {
       "Logistic Regression": LogisticRegression(max_iter=5000, class_weight='balanced'),
       "Random Forest": RandomForestClassifier(n_estimators=100, random_state=42, class_weight='balanced'),
@@ -25,10 +25,10 @@ def modeles(df):
       "LightGBM": LGBMClassifier()
   }
   
-  # Dictionnaire pour stocker les résultats
+
   results = {}
   
-  # Entraînement et évaluation
+
   for name, model in models.items():
       model.fit(X_train, y_train)
       y_pred = model.predict(X_test)
@@ -45,6 +45,6 @@ def modeles(df):
           "AUC": Auc
       }
   
-  # Affichage
+
   results_df = pd.DataFrame(results).T.sort_values(by="AUC", ascending=False)
   print(results_df)

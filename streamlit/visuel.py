@@ -44,3 +44,35 @@ def ROC(model,df):
   
  
   return fig
+
+
+def RECALL(model,df):
+  y_test = train_test(df)[3]
+  y_pred_proba = best_model.predict_proba(X_test)[:,1]
+  
+  precision, recall, _ = precision_recall_curve(y_test, y_pred_proba)
+  pr_auc = auc(recall, precision)
+
+  # Création de la figure
+  fig = go.Figure()
+  
+  # Ajouter la courbe Precision-Recall
+  fig.add_trace(go.Scatter(
+      x=recall,
+      y=precision,
+      mode='lines',
+      name=f"AUC = {pr_auc:.3f}",
+      line=dict(color='green', width=2)
+  ))
+  
+  # Mettre les labels et titre
+  fig.update_layout(
+      title="Precision-Recall Curve",
+      xaxis_title="Recall",
+      yaxis_title="Precision",
+      width=600,
+      height=600
+  )
+  
+  # Afficher le graphique interactif
+  return fig

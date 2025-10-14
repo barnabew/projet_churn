@@ -48,3 +48,80 @@ def modeles(df):
 
   results_df = pd.DataFrame(results).T.sort_values(by="AUC", ascending=False)
   print(results_df)
+
+
+def best_modeles(df):
+  log_reg = Pipeline([
+      ("scaler", StandardScaler()),
+      ("clf", LogisticRegression(max_iter=5000, penalty="l2", solver="lbfgs"))
+  ])
+
+  log_reg.fit(X_train, y_train)
+
+  coeffs = log_reg.named_steps["clf"].coef_[0]
+  features = X_train.columns
+  coef_df = pd.DataFrame({"Feature": features, "Coefficient": coeffs})
+  coef_df["Impact"] = np.exp(coeffs)
+
+  coef_df = coef_df.reindex(coef_df.Coefficient.abs().sort_values(ascending=False).index)
+
+  plt.figure(figsize=(10,6))
+  plt.barh(coef_df["Feature"], coef_df["Coefficient"])
+  plt.xlabel("Coefficient (poids)")
+  plt.ylabel("Variables")
+  plt.title("Impact des variables sur le churn (régression logistique)")
+  plt.gca().invert_yaxis()
+  plt.show()
+  
+  coef_df.head(10)
+
+  param_grid = {
+      "clf__C": [0.01, 0.1, 1, 10], 
+      "clf__penalty": ["l1", "l2"],
+      "clf__solver": ["liblinear", "saga"] 
+  }
+
+  grid = GridSearchCV(log_reg, param_grid, cv=5, scoring="recall", n_jobs=-1)
+  grid.fit(X_train, y_train)
+  
+  print("Meilleurs hyperparamètres:", grid.best_params_)
+  print("Meilleur score recall:", grid.best_score_)
+  
+  best_model = grid.best_estimator_
+
+  y_pred_proba = best_model.predict_proba(X_test)[:,1]
+
+  fpr, tpr, _ = roc_curve(y_test, y_pred_proba)
+  roc_auc = roc_auc_score(y_test, y_pred_proba)
+  
+  plt.figure(figsize=(6,6))
+  plt.plot(fpr, tpr, label=f"AUC = {roc_auc:.3f}")
+  plt.plot([0,1],[0,1],'--',color="grey")
+  plt.xlabel("False Positive Rate")
+  plt.ylabel("True Positive Rate (Recall)")
+  plt.title("ROC Curve")
+  plt.legend()
+  plt.show()
+
+  precision, recall, _ = precision_recall_curve(y_test, y_pred_proba)
+  pr_auc = auc(recall, precision)
+  
+  plt.figure(figsize=(6,6))
+  plt.plot(recall, precision, label=f"AUC = {pr_auc:.3f}")
+  plt.xlabel("Recall")
+  plt.ylabel("Precision")
+  plt.title("Precision-Recall Curve")
+  plt.legend()
+  plt.show()
+
+  y_pred = log_reg.predict(X_test)
+  y_proba = log_reg.predict_proba(X_test)[:, 1]
+  
+  print("Matrice de confusion :")
+  print(confusion_matrix(y_test, y_pred))
+  
+  print("\nRapport de classification :")
+  print(classification_report(y_test, y_pred))
+  
+  roc_auc = roc_auc_score(y_test, y_proba)
+  print("AUC :", roc_auc)

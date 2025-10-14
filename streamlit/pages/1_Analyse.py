@@ -2,7 +2,8 @@ import streamlit as st
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
-from utils.data_loader import load_data
+from data import chargement_donnée
+from ml import best_model
 
 st.title("📈 Analyse des données du churn")
 
@@ -19,11 +20,7 @@ col3.metric("Facture moyenne (€)", f"{df['MonthlyCharges'].mean():.2f}")
 
 st.markdown("---")
 st.subheader("Répartition du churn par type de contrat")
-fig, ax = plt.subplots()
-sns.countplot(data=df, x="Contract", hue="Churn", palette="Set2", ax=ax)
-st.pyplot(fig)
+st.plotly_chart(ROC(best_model(df),df), use_container_width=True)
 
 st.subheader("Distribution de la facture mensuelle")
-fig2, ax2 = plt.subplots()
-sns.kdeplot(data=df, x="MonthlyCharges", hue="Churn", fill=True, ax=ax2)
-st.pyplot(fig2)
+st.plotly_chart(RECALL(best_model(df),df), use_container_width=True)

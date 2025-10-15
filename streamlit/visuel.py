@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 import pandas as pd
 from ml import reg_lineaire, train_test
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report, roc_auc_score, roc_curve, precision_recall_curve, auc
 
 def poids(df):
   return px.bar(df, x="Feature", y="Coefficient", title="Impact des variables sur le churn (régression logistique)")

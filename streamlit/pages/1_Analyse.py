@@ -13,9 +13,9 @@ if df.empty:
     st.stop()
 
 col1, col2, col3 = st.columns(3)
-col1.metric("Taux de churn global", f"{df['Churn'].value_counts(normalize=True).get('Yes',0)*100:.1f}%")
+col1.metric("Taux de churn global", f"{df["Resiliation"].value_counts(normalize=True).get('Yes',0)*100:.1f}%")
 col2.metric("Nombre de clients", f"{len(df):,}")
-col3.metric("Facture moyenne (€)", f"{df['MonthlyCharges'].mean():.2f}")
+col3.metric("Facture moyenne (€)", f"{df["Facture_mensuelle"].mean():.2f}")
 
 st.markdown("---")
 st.subheader("Répartition du churn par type de contrat")

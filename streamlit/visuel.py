@@ -50,7 +50,7 @@ def ROC(model,df):
 
 
 def RECALL(model,df):
-  y_test = train_test(df)[3]
+  X_train, X_test, y_train, y_test = train_test(df)
   y_pred_proba = reg_lineaire(df).predict_proba(X_test)[:,1]
   
   precision, recall, _ = precision_recall_curve(y_test, y_pred_proba)

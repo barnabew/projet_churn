@@ -1,3 +1,8 @@
+import streamlit as st
+import pandas as pd
+import numpy as np
+import pickle
+
 # --- PAGE CONFIG ---
 st.set_page_config(page_title="Prédiction de Churn", page_icon="📉", layout="centered")
 

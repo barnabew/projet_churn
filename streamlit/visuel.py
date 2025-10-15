@@ -9,7 +9,7 @@ def poids(df):
 def ROC(model,df):
 
   y_test = train_test(df)[3]
-  y_pred_proba = best_model.predict_proba(X_test)[:,1]
+  y_pred_proba = reg_lineaire(df).predict_proba(X_test)[:,1]
   
   fpr, tpr, _ = roc_curve(y_test, y_pred_proba)
   roc_auc = roc_auc_score(y_test, y_pred_proba)
@@ -49,7 +49,7 @@ def ROC(model,df):
 
 def RECALL(model,df):
   y_test = train_test(df)[3]
-  y_pred_proba = best_model.predict_proba(X_test)[:,1]
+  y_pred_proba = reg_lineaire(df).predict_proba(X_test)[:,1]
   
   precision, recall, _ = precision_recall_curve(y_test, y_pred_proba)
   pr_auc = auc(recall, precision)

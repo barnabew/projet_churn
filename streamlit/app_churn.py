@@ -4,7 +4,7 @@ from data import chargement_nettoyage
 import pickle
 
 with open("modele.pkl", "wb") as f:
-    pickle.dump(reg_lineaire(chargement_nettoyage())), f)
+    pickle.dump(reg_lineaire(chargement_nettoyage()), f)
 
 st.set_page_config(
     page_title="Analyse et Prédiction du Churn Client",

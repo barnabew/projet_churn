@@ -23,6 +23,8 @@ def train_test(df):
 def reg_lineaire(df):
   X = df.drop(columns=["ID_Client", "Resiliation"])
   y = df["Resiliation"]
+
+  X_train, X_test, y_train, y_test = train_test(df)
   
   log_reg = Pipeline([
       ("scaler", StandardScaler()),

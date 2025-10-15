@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from data import chargement_nettoyage
 from ml import reg_lineaire
-
+from visuel import ROC,RECALL
 st.title("📈 Analyse des données du churn")
 
 df = chargement_nettoyage()

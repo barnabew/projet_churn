@@ -6,7 +6,13 @@ from ml import reg_lineaire, train_test
 from visuel import ROC,RECALL
 st.title("📈 Analyse des données du churn")
 
-df = chargement_nettoyage()
+@st.cache_resource
+def load_model():
+    df = chargement_nettoyage()
+    model = reg_lineaire(df)
+    return model, df  # on retourne df pour calculer les moyennes localement
+
+model, df = load_model()
 
 if df.empty:
     st.warning("Aucune donnée disponible.")
@@ -19,7 +25,7 @@ col3.metric("Facture moyenne (€)", f"{df["Facture_mensuelle"].mean():.2f}")
 
 st.markdown("---")
 st.subheader("Répartition du churn par type de contrat")
-st.plotly_chart(ROC(reg_lineaire(df),df), use_container_width=True)
+st.plotly_chart(ROC(model,df), use_container_width=True)
 
 st.subheader("Distribution de la facture mensuelle")
-st.plotly_chart(RECALL(reg_lineaire(df),df), use_container_width=True)
+st.plotly_chart(RECALL(model,df), use_container_width=True)

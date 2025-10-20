@@ -13,9 +13,11 @@ st.title("📉 Prédiction de la Résiliation Client (Churn)")
 st.write("Entrez les informations principales du client pour estimer le risque de résiliation.")
 
 # --- CHARGEMENT DU MODELE ---
+
 @st.cache_resource
 
 pickle_path = "../modele.pkl"
+
 
 def load_model():
     with open(pickle_path, "rb") as f:

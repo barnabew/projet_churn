@@ -20,7 +20,7 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title("📊 Projet : Prédiction du Churn Client Télécom")
+st.title("Projet : Prédiction du Churn Client Télécom")
 st.markdown(intro)
 
 st.sidebar.success("Choisissez une page ci-dessus pour commencer.")

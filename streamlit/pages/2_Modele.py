@@ -52,6 +52,8 @@ def encode_input():
     }
     return pd.DataFrame([data])
 
+# --- Créer le DataFrame utilisateur ---
+data = encode_input()
 data = data.reindex(columns=features, fill_value=0)
 
 # --- PREDICTION ---

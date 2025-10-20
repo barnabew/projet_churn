@@ -4,6 +4,7 @@ import pandas as pd
 import pickle
 import numpy as np
 import plotly.graph_objects as go
+import os
 
 # --- PAGE CONFIG ---
 st.set_page_config(page_title="📉 Prédiction de Churn - Telco", page_icon="📉", layout="centered")
@@ -13,8 +14,11 @@ st.write("Entrez les informations principales du client pour estimer le risque d
 
 # --- CHARGEMENT DU MODELE ---
 @st.cache_resource
+
+pickle_path = os.path.join(os.path.dirname(__file__), "..", "modele.pkl")
+
 def load_model():
-    with open("modele.pkl", "rb") as f:
+    with open(pickle_path, "rb") as f:
         model_data = pickle.load(f)
     return model_data
 

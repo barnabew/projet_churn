@@ -52,11 +52,11 @@ def encode_input():
     }
     return pd.DataFrame([data])
 
-input_data = input_data.reindex(columns=features, fill_value=0)
+data = data.reindex(columns=features, fill_value=0)
 
 # --- PREDICTION ---
 if st.button("🔮 Prédire la probabilité de résiliation"):
-    proba = model.predict_proba(input_data)[0][1]
+    proba = model.predict_proba(data)[0][1]
     percent = round(proba * 100, 2)
 
     st.metric(label="Probabilité de churn", value=f"{percent} %")

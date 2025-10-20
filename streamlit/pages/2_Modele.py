@@ -22,11 +22,14 @@ def load_model():
     model = reg_lineaire(df)
     X_train, X_test, y_train, y_test = train_test(df)
     features = X_train.columns.tolist()
+    
+    # Moyennes uniquement pour les colonnes numériques
     numeric_cols = df.select_dtypes(include='number').columns
     data_mean = df[numeric_cols].mean()
-    return model, features, df, data_mean
+    
+    return model, features, data_mean
 
-model, features, df, data_mean = load_model()
+model, features, data_mean = load_model()
 
 # --- FORMULAIRE SIMPLIFIÉ ---
 st.subheader("🧩 Données essentielles du client")
@@ -47,8 +50,9 @@ with col2:
 
 # --- ENCODAGE ---
 def encode_input():
-    data = data_mean.copy()
+    data = data_mean.copy()  # moyenne pour toutes les autres variables
     
+    # Inputs utilisateur
     data["Anciennete"] = anciennete
     data["Fibre_internet"] = 1 if type_internet == "Fibre optique" else 0
     data["DSL"] = 1 if type_internet == "DSL" else 0
@@ -59,10 +63,8 @@ def encode_input():
     data["Streaming_TV"] = 1 if "Streaming TV" in services else 0
     data["Securite_en_ligne"] = 1 if "Sécurité en ligne" in services else 0
     
-    # Ajouter les colonnes manquantes à 0
-    for col in features:
-        if col not in data:
-            data[col] = 0
+    # Réindexer selon les colonnes du modèle pour éviter les erreurs
+    data = data.reindex(columns=features, fill_value=0)
     
     return pd.DataFrame([data])
 

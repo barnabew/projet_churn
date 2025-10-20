@@ -1,7 +1,7 @@
 import streamlit as st
 from ml import reg_lineaire, train_test
 from data import chargement_nettoyage
-frome textes import intro
+from textes import intro
 import pickle
 
 df=chargement_nettoyage()

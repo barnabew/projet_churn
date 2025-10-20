@@ -3,7 +3,8 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import plotly.graph_objects as go
-
+from data import chargement_nettoyage
+from ml import reg_lineaire, train_test
 
 # --- PAGE CONFIG ---
 st.set_page_config(page_title="📉 Prédiction de Churn - Telco", page_icon="📉", layout="centered")

@@ -52,12 +52,14 @@ def encode_input():
     }
     return pd.DataFrame([data])
 
-# --- Créer le DataFrame utilisateur ---
-data = encode_input()
-data = data.reindex(columns=features, fill_value=0)
+
 
 # --- PREDICTION ---
 if st.button("🔮 Prédire la probabilité de résiliation"):
+    # --- Créer le DataFrame utilisateur ---
+    data = encode_input()
+    data = data.reindex(columns=features, fill_value=0)
+    
     proba = model.predict_proba(data)[0][1]
     percent = round(proba * 100, 2)
 

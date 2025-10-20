@@ -1,6 +1,7 @@
 import streamlit as st
 from ml import reg_lineaire, train_test
 from data import chargement_nettoyage
+frome textes import intro
 import pickle
 
 df=chargement_nettoyage()
@@ -20,6 +21,6 @@ st.set_page_config(
 )
 
 st.title("📊 Projet : Prédiction du Churn Client Télécom")
-st.write("Bienvenue dans l’application d’analyse et de prédiction du churn.")
+st.markdown(intro)
 
 st.sidebar.success("Choisissez une page ci-dessus pour commencer.")

@@ -18,7 +18,6 @@ df = chargement_nettoyage()
 model = reg_lineaire(df)
 X_train, X_test, y_train, y_test = train_test(df)
 features = X_train.columns.tolist()
-expected_cols = model_data["features"]
 
 # --- FORMULAIRE ---
 st.subheader("🧩 Données du client")
@@ -53,7 +52,7 @@ def encode_input():
     }
     return pd.DataFrame([data])
 
-input_data = input_data.reindex(columns=expected_cols, fill_value=0)
+input_data = input_data.reindex(columns=features, fill_value=0)
 
 # --- PREDICTION ---
 if st.button("🔮 Prédire la probabilité de résiliation"):

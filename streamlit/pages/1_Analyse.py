@@ -10,7 +10,9 @@ st.title("📈 Analyse des données du churn")
 def load_model():
     df = chargement_nettoyage()
     model = reg_lineaire(df)
-    return model, df  # on retourne df pour calculer les moyennes localement
+    roc = ROC(model,df)
+    recall = RECALL(model,df)
+    return model, df, roc, recall  # on retourne df pour calculer les moyennes localement
 
 model, df = load_model()
 
@@ -25,7 +27,7 @@ col3.metric("Facture moyenne (€)", f"{df["Facture_mensuelle"].mean():.2f}")
 
 st.markdown("---")
 st.subheader("Répartition du churn par type de contrat")
-st.plotly_chart(ROC(model,df), use_container_width=True)
+st.plotly_chart(roc, use_container_width=True)
 
 st.subheader("Distribution de la facture mensuelle")
-st.plotly_chart(RECALL(model,df), use_container_width=True)
+st.plotly_chart(recall, use_container_width=True)

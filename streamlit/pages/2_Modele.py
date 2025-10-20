@@ -17,7 +17,8 @@ def load_model():
     with open("modele.pkl", "rb") as f:
         return pickle.load(f)
 
-model = load_model()
+model = model_data["model"]
+expected_cols = model_data["features"]
 
 # --- FORMULAIRE ---
 st.subheader("🧩 Données du client")
@@ -52,7 +53,7 @@ def encode_input():
     }
     return pd.DataFrame([data])
 
-input_data = encode_input()
+input_data = input_data.reindex(columns=expected_cols, fill_value=0)
 
 # --- PREDICTION ---
 if st.button("🔮 Prédire la probabilité de résiliation"):

@@ -5,7 +5,7 @@ import pickle
 
 model_data = {
     "model": reg_lineaire(chargement_nettoyage()),
-    "features": train_test(chargement_nettoyage()).columns.tolist()
+    "features": train_test(chargement_nettoyage())[0].columns.tolist()
 }
 
 with open("modele.pkl", "wb") as f:

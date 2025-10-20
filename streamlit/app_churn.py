@@ -3,9 +3,11 @@ from ml import reg_lineaire, train_test
 from data import chargement_nettoyage
 import pickle
 
+df=chargement_nettoyage()
+
 model_data = {
-    "model": reg_lineaire(chargement_nettoyage()),
-    "features": train_test(chargement_nettoyage())[0].columns.tolist()
+    "model": reg_lineaire(df),
+    "features": train_test(df)[0].columns.tolist()
 }
 
 with open("modele.pkl", "wb") as f:

@@ -14,7 +14,7 @@ def load_model():
     recall = RECALL(model,df)
     return model, df, roc, recall  # on retourne df pour calculer les moyennes localement
 
-model, df = load_model()
+model, df , roc, recall  = load_model()
 
 if df.empty:
     st.warning("Aucune donnée disponible.")

@@ -17,11 +17,15 @@ st.title("📉 Prédiction de la Résiliation Client (Churn)")
 st.write("Entrez les informations principales du client pour estimer le risque de résiliation.")
 
 # --- CHARGEMENT DU MODELE ---
-df = chargement_nettoyage()
-model = reg_lineaire(df)
-X_train, X_test, y_train, y_test = train_test(df)
-features = X_train.columns.tolist()
+@st.cache_resource
+def load_model():
+    df = chargement_nettoyage()
+    model = reg_lineaire(df)
+    X_train, X_test, y_train, y_test = train_test(df)
+    features = X_train.columns.tolist()
+    return model, features, df
 
+model, features, df = load_model()
 # --- FORMULAIRE SIMPLIFIÉ ---
 st.subheader("🧩 Données essentielles du client")
 

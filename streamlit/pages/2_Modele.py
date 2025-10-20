@@ -13,6 +13,7 @@ st.write("Entrez les informations principales du client pour estimer le risque d
 
 # --- CHARGEMENT DU MODELE ---
 @st.cache_resource
+
 with open("modele.pkl", "rb") as f:
     model_data = pickle.load(f)
 

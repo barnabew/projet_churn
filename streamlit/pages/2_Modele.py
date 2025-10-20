@@ -15,23 +15,18 @@ st.set_page_config(
 st.title("📉 Prédiction de la Résiliation Client (Churn)")
 st.write("Entrez les informations principales du client pour estimer le risque de résiliation.")
 
-# --- CHARGEMENT DU MODELE (une seule fois) ---
+# --- CHARGEMENT DU MODELE ---
 @st.cache_resource
 def load_model():
     df = chargement_nettoyage()
     model = reg_lineaire(df)
     X_train, X_test, y_train, y_test = train_test(df)
     features = X_train.columns.tolist()
-    
-    # Moyennes uniquement pour les colonnes numériques
-    numeric_cols = df.select_dtypes(include='number').columns
-    data_mean = df[numeric_cols].mean()
-    
-    return model, features, data_mean
+    return model, features, df  # on retourne df pour calculer les moyennes localement
 
-model, features, data_mean = load_model()
+model, features, df = load_model()
 
-# --- FORMULAIRE SIMPLIFIÉ ---
+# --- FORMULAIRE UTILISATEUR ---
 st.subheader("🧩 Données essentielles du client")
 
 col1, col2 = st.columns(2)
@@ -48,11 +43,13 @@ with col2:
     contrat = st.selectbox("Type de contrat", ["Mensuel", "1 an", "2 ans"])
     facture_totale = st.number_input("Total dépensé (€)", min_value=0.0, max_value=10000.0, value=1000.0)
 
-# --- ENCODAGE ---
+# --- ENCODAGE DES INPUTS ---
 def encode_input():
-    data = data_mean.copy()  # moyenne pour toutes les autres variables
-    
-    # Inputs utilisateur
+    # Créer un DataFrame avec les moyennes des colonnes numériques
+    numeric_cols = df.select_dtypes(include='number').columns
+    data = pd.DataFrame([df[numeric_cols].mean()])
+
+    # Remplacer les colonnes importantes par les valeurs utilisateur
     data["Anciennete"] = anciennete
     data["Fibre_internet"] = 1 if type_internet == "Fibre optique" else 0
     data["DSL"] = 1 if type_internet == "DSL" else 0
@@ -62,13 +59,12 @@ def encode_input():
     data["Streaming_Films"] = 1 if "Streaming Films" in services else 0
     data["Streaming_TV"] = 1 if "Streaming TV" in services else 0
     data["Securite_en_ligne"] = 1 if "Sécurité en ligne" in services else 0
-    
-    # Réindexer selon les colonnes du modèle pour éviter les erreurs
-    data = data.reindex(columns=features, fill_value=0)
-    
-    return pd.DataFrame([data])
 
-# --- PRÉDICTION ---
+    # Réindexer pour s'assurer que toutes les colonnes du modèle sont présentes
+    data = data.reindex(columns=features, fill_value=0)
+    return data
+
+# --- PREDICTION ---
 if st.button("🔮 Prédire la probabilité de résiliation"):
     input_data = encode_input()
     proba = model.predict_proba(input_data)[0][1]

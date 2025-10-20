@@ -1,10 +1,15 @@
 import streamlit as st
-from ml import reg_lineaire
+from ml import reg_lineaire, train_test
 from data import chargement_nettoyage
 import pickle
 
+model_data = {
+    "model": reg_lineaire(chargement_nettoyage()),
+    "features": train_test(chargement_nettoyage()).columns.tolist()
+}
+
 with open("modele.pkl", "wb") as f:
-    pickle.dump(reg_lineaire(chargement_nettoyage()), f)
+    pickle.dump(model_data, f)
 
 st.set_page_config(
     page_title="Analyse et Prédiction du Churn Client",

@@ -14,19 +14,10 @@ st.write("Entrez les informations principales du client pour estimer le risque d
 
 # --- CHARGEMENT DU MODELE ---
 
-@st.cache_resource
-
-pickle_path = "../modele.pkl"
-
-
-def load_model():
-    with open(pickle_path, "rb") as f:
-        model_data = pickle.load(f)
-    return model_data
-
-# --- Utilisation ---
-model_data = load_model()
-model = model_data["model"]
+df = chargement_nettoyage()
+model = reg_lineaire(df)
+X_train, X_test, y_train, y_test = train_test(df)
+features = X_train.columns.tolist()
 expected_cols = model_data["features"]
 
 # --- FORMULAIRE ---

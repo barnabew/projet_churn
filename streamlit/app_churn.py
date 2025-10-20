@@ -4,16 +4,6 @@ from data import chargement_nettoyage
 from textes import intro
 import pickle
 
-df=chargement_nettoyage()
-
-model_data = {
-    "model": reg_lineaire(df),
-    "features": train_test(df)[0].columns.tolist()
-}
-
-with open("modele.pkl", "wb") as f:
-    pickle.dump(model_data, f)
-
 st.set_page_config(
     page_title="Analyse et Prédiction du Churn Client",
     page_icon="📉",

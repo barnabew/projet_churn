@@ -7,12 +7,11 @@ from ml import reg_lineaire, train_test
 
 # --- PAGE CONFIG ---
 st.set_page_config(
-    page_title="📉 Prédiction de Churn - Telco",
-    page_icon="📉",
+    page_title=" Prédiction de Churn - Telco",
     layout="centered"
 )
 
-st.title("📉 Prédiction de la Résiliation Client (Churn)")
+st.title(" Prédiction de la Résiliation Client (Churn)")
 st.write("Entrez les informations principales du client pour estimer le risque de résiliation.")
 
 # --- CHARGEMENT DU MODELE ---
@@ -27,7 +26,7 @@ def load_model():
 model, features, df = load_model()
 
 # --- FORMULAIRE UTILISATEUR ---
-st.subheader("🧩 Données essentielles du client")
+st.subheader(" Données essentielles du client")
 
 col1, col2 = st.columns(2)
 
@@ -65,7 +64,7 @@ def encode_input():
     return data
 
 # --- PREDICTION ---
-if st.button("🔮 Prédire la probabilité de résiliation"):
+if st.button(" Prédire la probabilité de résiliation"):
     input_data = encode_input()
     proba = model.predict_proba(input_data)[0][1]
     percent = round(proba * 100, 2)

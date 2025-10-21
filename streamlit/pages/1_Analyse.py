@@ -42,19 +42,19 @@ st.subheader("📈 Indicateurs de performance du modèle")
 
 col1, col2, col3, col4, col5 = st.columns(5)
 col1.metric("Accuracy", f"{score:.2%}")
-col1.caption("ℹ️ Pourcentage total de prédictions correctes")
-
 col2.metric("Précision", f"{precision:.2%}")
-col2.caption("ℹ️ Clients prédits churn qui le sont vraiment")
-
 col3.metric("Rappel", f"{recall:.2%}")
-col3.caption("ℹ️ Clients réellement churn détectés")
-
 col4.metric("F1-score", f"{f1:.2%}")
-col4.caption("ℹ️ Moyenne entre précision et rappel")
-
 col5.metric("AUC", f"{auc:.2f}")
-col5.caption("ℹ️ Capacité du modèle à séparer churn / non-churn")
+
+with st.expander("ℹ️ Voir les explications des indicateurs"):
+    st.markdown("""
+    - **Accuracy** : proportion totale de prédictions correctes.  
+    - **Précision** : parmi les churn prédits, combien sont réels.  
+    - **Rappel** : parmi les vrais churn, combien ont été détectés.  
+    - **F1-score** : équilibre entre précision et rappel.  
+    - **AUC (ROC)** : capacité du modèle à distinguer churners et non-churners.  
+    """)
 
 st.markdown("---")
 

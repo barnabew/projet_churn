@@ -1,4 +1,4 @@
-mport streamlit as st
+import streamlit as st
 import pandas as pd
 from data import chargement_nettoyage
 from ml import reg_lineaire, train_test

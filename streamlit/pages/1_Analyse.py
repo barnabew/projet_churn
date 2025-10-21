@@ -40,13 +40,12 @@ if df.empty:
 # --- KPI : METRIQUES DE PERFORMANCE ---
 st.subheader("📈 Indicateurs de performance du modèle")
 
-col1, col2, col3, col4 = st.columns(4)
+col1, col2, col3, col4, col5 = st.columns(5)
 col1.metric("Exactitude (Accuracy)", f"{score:.2%}")
 col2.metric("Précision", f"{precision:.2%}")
 col3.metric("Rappel (Recall)", f"{recall:.2%}")
 col4.metric("F1-Score", f"{f1:.2%}")
-
-st.metric("AUC (Air sous la courbe ROC)", f"{auc:.2f}")
+col5.metric("AUC (Air sous la courbe ROC)", f"{auc:.2f}")
 
 st.markdown("---")
 

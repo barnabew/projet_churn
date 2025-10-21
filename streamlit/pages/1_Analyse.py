@@ -5,8 +5,8 @@ from ml import reg_lineaire, train_test
 from visuel import ROC, RECALL
 
 # --- PAGE CONFIG ---
-st.set_page_config(page_title="📊 Performance du Modèle - Churn", page_icon="📊", layout="wide")
-st.title("📊 Évaluation du Modèle de Prédiction du Churn")
+st.set_page_config(page_title=" Performance du Modèle - Churn", layout="wide")
+st.title(" Évaluation du Modèle de Prédiction du Churn")
 
 @st.cache_resource
 def load_model():
@@ -34,11 +34,11 @@ def load_model():
 model, df, roc_fig, recall_fig, score, precision, recall, f1, auc = load_model()
 
 if df.empty:
-    st.warning("⚠️ Aucune donnée disponible.")
+    st.warning(" Aucune donnée disponible.")
     st.stop()
 
 # --- KPI : METRIQUES DE PERFORMANCE ---
-st.subheader("📈 Indicateurs de performance du modèle")
+st.subheader(" Indicateurs de performance du modèle")
 
 col1, col2, col3, col4, col5 = st.columns(5)
 col1.metric("Accuracy", f"{score:.2%}")
@@ -59,7 +59,7 @@ with st.expander("ℹ️ Voir les explications des indicateurs"):
 st.markdown("---")
 
 # --- COURBES ---
-st.subheader("🎯 Courbe ROC (Receiver Operating Characteristic)")
+st.subheader(" Courbe ROC (Receiver Operating Characteristic)")
 st.plotly_chart(roc_fig, use_container_width=True)
 with st.expander(" Interprétation"):
     st.markdown("""
@@ -71,7 +71,7 @@ with st.expander(" Interprétation"):
 
 st.markdown("---")
 
-st.subheader("📊 Courbe Précision - Rappel")
+st.subheader(" Courbe Précision - Rappel")
 st.plotly_chart(recall_fig, use_container_width=True)
 with st.expander(" Interprétation"):
     st.markdown("""
@@ -84,7 +84,7 @@ with st.expander(" Interprétation"):
 st.markdown("---")
 
 # --- CONCLUSION ---
-st.subheader("🧠 Choix du modèle")
+st.subheader(" Choix du modèle")
 st.write("""
 Nous avons choisi d’utiliser une **régression logistique** comme modèle de base.  
 Ce modèle présente plusieurs avantages :

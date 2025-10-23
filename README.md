@@ -51,7 +51,7 @@ L’analyse des coefficients met en évidence plusieurs facteurs majeurs :
 
 ## Organisation du projet
 
-Le notebook `Projet_churn.ipynb` contient toutes les explications détaillées sur le **traitement des données**,  
+Le notebook [`Projet_churn.ipynb`](https://github.com/barnabew/projet_churn/blob/main/Projet_churn.ipynb) contient toutes les explications détaillées sur le **traitement des données**,  
 le **nettoyage**, le **test des différents modèles** et l’**analyse des performances**.  
 Il constitue la base exploratoire du projet, permettant de documenter chaque étape du raisonnement.
 

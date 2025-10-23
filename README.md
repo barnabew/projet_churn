@@ -47,6 +47,11 @@ L’analyse des coefficients met en évidence plusieurs facteurs majeurs :
 - La **facture mensuelle** : un montant plus élevé est corrélé à une plus forte propension au churn.  
 - Le **type d’accès Internet** influence également la fidélité, certaines technologies étant plus associées au départ des clients.
 
+Ces résultats ont ensuite permis de **construire un modèle prédictif robuste**,  
+capable d’estimer la probabilité de résiliation pour chaque client à partir de ses caractéristiques.  
+Ce modèle sert de base à l’interface **Streamlit** développée pour visualiser les performances et effectuer des **prédictions interactives** en temps réel.
+
+
 ---
 
 ## Organisation du projet
@@ -58,7 +63,6 @@ Il constitue la base exploratoire du projet, permettant de documenter chaque ét
 Le dossier [`streamlit/`](https://github.com/barnabew/projet_churn/tree/main/streamlit) reprend le même code,  
 mais il a été **structuré en plusieurs fichiers** afin de rendre l’application plus **lisible**, **modulaire** et **facile à maintenir**.  
 Cette séparation du code (data, machine learning, visualisation, interface) permet une meilleure réutilisation et simplifie les futures évolutions du projet.  
-Une approche similaire aurait également pu être appliquée dans le notebook pour renforcer la clarté du pipeline analytique.
 
 ---
 

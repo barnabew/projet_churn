@@ -51,13 +51,14 @@ L’analyse des coefficients met en évidence plusieurs facteurs majeurs :
 
 ## Organisation du projet
 
-Le notebook `Projet_churn.ipynb` comprend l’ensemble des traitements et analyses :
-- Préparation et nettoyage des données  
-- Entraînement et comparaison des modèles  
-- Optimisation et évaluation des performances  
-- Interprétation des résultats et visualisations associées  
+Le notebook `Projet_churn.ipynb` contient toutes les explications détaillées sur le **traitement des données**,  
+le **nettoyage**, le **test des différents modèles** et l’**analyse des performances**.  
+Il constitue la base exploratoire du projet, permettant de documenter chaque étape du raisonnement.
 
-Les principales librairies utilisées sont : **pandas**, **numpy**, **scikit-learn**, **xgboost**, **lightgbm**, **matplotlib**, **plotly** et **streamlit**.
+Le dossier [`streamlit/`](https://github.com/barnabew/projet_churn/tree/main/streamlit) reprend le même code,  
+mais il a été **structuré en plusieurs fichiers** afin de rendre l’application plus **lisible**, **modulaire** et **facile à maintenir**.  
+Cette séparation du code (data, machine learning, visualisation, interface) permet une meilleure réutilisation et simplifie les futures évolutions du projet.  
+Une approche similaire aurait également pu être appliquée dans le notebook pour renforcer la clarté du pipeline analytique.
 
 ---
 

@@ -6,7 +6,7 @@ Dans un marché des télécommunications très concurrentiel, la fidélisation d
 Acquérir un nouveau client coûte souvent beaucoup plus cher que de conserver un abonné existant.  
 Anticiper les résiliations — ou **churn** — permet ainsi d’optimiser les campagnes marketing et d’améliorer la satisfaction client.
 
-Ce projet vise à **prédire la résiliation des clients** d’une entreprise de télécommunications à partir du jeu de données public *Telco Customer Churn*.  
+Ce projet vise à **prédire la résiliation des clients** d’une entreprise de télécommunications à partir du jeu de données public [Telco Customer Churn](https://www.kaggle.com/datasets/blastchar/telco-customer-churn).  
 L’objectif est double :
 - Identifier les facteurs qui influencent le plus la décision de résiliation ;
 - Développer un modèle de machine learning capable d’anticiper les clients à risque.

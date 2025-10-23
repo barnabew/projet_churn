@@ -81,11 +81,15 @@ L’application est disponible :  [Accéder à l'application](https://projetchur
 
 ## Résultats et recommandations
 
-L’analyse met en évidence que la résiliation des clients est influencée par plusieurs variables contractuelles et comportementales.  
-Les recommandations issues de ce travail sont les suivantes :
+L’analyse montre que la résiliation des clients est principalement influencée par des facteurs contractuels et comportementaux.  
+Les nouveaux clients présentent un risque de départ plus élevé, ce qui souligne l’importance de mettre en place des actions de fidélisation dès les premiers mois d’abonnement, notamment à travers des offres promotionnelles ciblées.  
+Les contrats longue durée apparaissent comme un levier efficace pour réduire le taux de churn, tandis que les clients à forte facturation méritent une attention particulière, avec des avantages personnalisés afin de renforcer leur engagement.  
+Enfin, une amélioration continue de la qualité du service client, en particulier pour les nouveaux abonnés, contribuerait significativement à limiter les résiliations.
 
-1. **Fidéliser les nouveaux clients** par des offres promotionnelles ou des réductions ciblées après les premiers mois d’abonnement.  
-2. **Encourager la souscription à des contrats longue durée** pour réduire le taux de churn.  
-3. **Surveiller les clients à forte facturation** et leur proposer des avantages personnalisés.  
-4. **Améliorer la qualité du service client**, en particulier pour les nouveaux abonnés, plus susceptibles de résilier.
+
+
+
+
+
+
 

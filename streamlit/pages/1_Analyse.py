@@ -85,7 +85,6 @@ st.markdown("---")
 
 # --- CONCLUSION ---
 st.subheader("Analyse technique des performances du modèle")
-st.subheader("Analyse technique des performances du modèle")
 st.write("""
 Le modèle de régression logistique présente une **AUC de 0.86**, illustrant une bonne capacité à discriminer les clients à risque de résiliation 
 des clients fidèles. Cette performance témoigne d’un modèle stable, à la fois robuste et interprétable.

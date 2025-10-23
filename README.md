@@ -70,7 +70,7 @@ Elle se compose de plusieurs pages :
 2. **Performance du modèle** – évaluation des résultats obtenus avec les principales métriques (AUC, rappel, précision, F1-score) et visualisation des courbes ROC et Précision–Rappel.  
 3. **Prédiction interactive** – simulation en temps réel de la probabilité de churn à partir des caractéristiques d’un client.
 
-L’application est disponible dans le dossier [`streamlit/`](https://github.com/barnabew/projet_churn/tree/main/streamlit) du projet.
+L’application est disponible :  [Accéder à l'application](https://projetchurn.streamlit.app/).
 
 ---
 

@@ -84,14 +84,19 @@ with st.expander(" Interprétation"):
 st.markdown("---")
 
 # --- CONCLUSION ---
-st.subheader(" Choix du modèle")
+st.subheader("Analyse technique des performances du modèle")
 st.write("""
-Nous avons choisi d’utiliser une **régression logistique** comme modèle de base.  
-Ce modèle présente plusieurs avantages :
-- Simplicité d’interprétation des coefficients ;
-- Rapidité d’entraînement ;
-- Bon équilibre entre biais et variance sur ce type de données.
+Le modèle de régression logistique obtient une **AUC de 0.86**, indiquant une bonne capacité discriminante.  
+Les valeurs de **précision (≈0.80)** et de **rappel (≈0.72)** traduisent un équilibre satisfaisant entre la détection 
+des clients churners et la limitation des fausses alertes.
 
-Les hyperparamètres ont été sélectionnés après plusieurs essais afin d’obtenir le meilleur compromis entre **rappel** et **précision**,  
-ce qui est essentiel pour identifier efficacement les clients susceptibles de résilier.
+L’analyse des métriques montre que le modèle privilégie légèrement la **rétention des vrais churners** 
+(plutôt que la réduction des faux positifs), ce qui est cohérent avec un objectif métier de **prévention du départ client**.
+
+En revanche, une légère perte de précision apparaît lorsque le seuil de décision est abaissé pour maximiser le rappel.  
+Cela suggère qu’un **ajustement du seuil de probabilité** ou l’intégration d’un **poids de classe** 
+pourrait améliorer la détection des churners rares.
+
+Dans l’ensemble, la régression logistique offre ici un **modèle performant, stable et interprétable**, 
+avec un compromis optimal entre précision et rappel sur un jeu de données équilibré.
 """)

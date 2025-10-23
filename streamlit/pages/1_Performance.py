@@ -6,7 +6,7 @@ from visuel import ROC, RECALL
 
 # --- PAGE CONFIG ---
 st.set_page_config(page_title=" Performance du Modèle - Churn", layout="wide")
-st.title(" Évaluation du Modèle de Prédiction du Churn")
+st.title(" Performance du modèle de Prédiction du Churn")
 
 @st.cache_resource
 def load_model():

@@ -85,18 +85,26 @@ st.markdown("---")
 
 # --- CONCLUSION ---
 st.subheader("Analyse technique des performances du modèle")
+st.subheader("Analyse technique des performances du modèle")
 st.write("""
-Le modèle de régression logistique obtient une **AUC de 0.86**, indiquant une bonne capacité discriminante.  
-Les valeurs de **précision (≈0.80)** et de **rappel (≈0.72)** traduisent un équilibre satisfaisant entre la détection 
-des clients churners et la limitation des fausses alertes.
+Le modèle de régression logistique présente une **AUC de 0.86**, illustrant une bonne capacité à discriminer les clients à risque de résiliation 
+des clients fidèles. Cette performance témoigne d’un modèle stable, à la fois robuste et interprétable.
 
-L’analyse des métriques montre que le modèle privilégie légèrement la **rétention des vrais churners** 
-(plutôt que la réduction des faux positifs), ce qui est cohérent avec un objectif métier de **prévention du départ client**.
+Les métriques principales montrent une **précision d’environ 0.80** et un **rappel de 0.72**, indiquant un compromis satisfaisant 
+entre la qualité des prédictions positives et la capacité à détecter la majorité des churners. 
+Le **F1-score**, proche de 0.76, confirme cet équilibre global entre précision et rappel.  
+Le modèle maintient par ailleurs une **bonne cohérence entre les ensembles d’entraînement et de test**, 
+ce qui démontre une généralisation correcte sans surapprentissage notable.
 
-En revanche, une légère perte de précision apparaît lorsque le seuil de décision est abaissé pour maximiser le rappel.  
-Cela suggère qu’un **ajustement du seuil de probabilité** ou l’intégration d’un **poids de classe** 
-pourrait améliorer la détection des churners rares.
+Les analyses complémentaires, présentées dans le fichier **`Projet_churn.ipynb`** disponible sur le dépôt GitHub, 
+montrent qu’un travail approfondi d’ajustement des **hyperparamètres** (pénalisation, régularisation, solver) a été réalisé, 
+ainsi qu’une **évaluation comparative** avec d’autres modèles tels que **Random Forest** et **XGBoost**.  
+Ces tests ont confirmé que la régression logistique offre le **meilleur compromis entre performance, interprétabilité et simplicité de déploiement**.
 
-Dans l’ensemble, la régression logistique offre ici un **modèle performant, stable et interprétable**, 
-avec un compromis optimal entre précision et rappel sur un jeu de données équilibré.
+Enfin, une étude du **seuil de décision** et de la **pondération des classes** a permis d’améliorer la détection des clients churners 
+sans détériorer excessivement la précision globale.  
+Les résultats finaux montrent un modèle bien calibré, capable d’identifier efficacement les clients à risque tout en conservant une cohérence métier.
+
+Ainsi, la régression logistique constitue ici un **modèle de référence** fiable et opérationnel, 
+dont le développement complet et les expérimentations sont détaillés dans le notebook d’analyse joint au projet.
 """)

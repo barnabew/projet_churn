@@ -58,30 +58,7 @@ with st.expander("ℹ️ Voir les explications des indicateurs"):
 
 st.markdown("---")
 
-# --- COURBES ---
-st.subheader(" Courbe ROC (Receiver Operating Characteristic)")
-st.plotly_chart(roc_fig, use_container_width=True)
-with st.expander(" Interprétation"):
-    st.markdown("""
-    La courbe ROC illustre la capacité du modèle à distinguer les clients susceptibles de résilier de ceux qui restent fidèles. 
-    L’AUC obtenue est de 0.86, ce qui indique une bonne performance. 
-    Une valeur proche de 1 traduit un modèle performant, tandis qu’une valeur de 0.5 correspond à un modèle aléatoire. 
-    Ainsi, avec un AUC de 0.86, le modèle identifie correctement les clients churners dans la grande majorité des cas.
-    """)
 
-st.markdown("---")
-
-st.subheader(" Courbe Précision - Rappel")
-st.plotly_chart(recall_fig, use_container_width=True)
-with st.expander(" Interprétation"):
-    st.markdown("""
-    La courbe Precision–Recall permet d’évaluer plus finement la qualité des prédictions sur la classe minoritaire, ici la résiliation. 
-    On observe une bonne précision (environ 0.7 à 0.8) pour des valeurs de rappel intermédiaires, 
-    ce qui signifie que le modèle détecte correctement une part importante des clients à risque tout en limitant le nombre de fausses alertes. 
-    Comme souvent, lorsque le rappel augmente, la précision diminue, illustrant le compromis classique entre ces deux indicateurs.
-    """)
-
-st.markdown("---")
 
 # --- CONCLUSION ---
 st.subheader("Analyse technique des performances du modèle")
@@ -107,3 +84,30 @@ Les résultats finaux montrent un modèle bien calibré, capable d’identifier 
 Ainsi, la régression logistique constitue ici un **modèle de référence** fiable et opérationnel, 
 dont le développement complet et les expérimentations sont détaillés dans le notebook d’analyse joint au projet.
 """)
+
+st.markdown("---")
+
+# --- COURBES ---
+st.subheader(" Courbe ROC (Receiver Operating Characteristic)")
+st.plotly_chart(roc_fig, use_container_width=True)
+with st.expander(" Interprétation"):
+    st.markdown("""
+    La courbe ROC illustre la capacité du modèle à distinguer les clients susceptibles de résilier de ceux qui restent fidèles. 
+    L’AUC obtenue est de 0.86, ce qui indique une bonne performance. 
+    Une valeur proche de 1 traduit un modèle performant, tandis qu’une valeur de 0.5 correspond à un modèle aléatoire. 
+    Ainsi, avec un AUC de 0.86, le modèle identifie correctement les clients churners dans la grande majorité des cas.
+    """)
+
+st.markdown("---")
+
+st.subheader(" Courbe Précision - Rappel")
+st.plotly_chart(recall_fig, use_container_width=True)
+with st.expander(" Interprétation"):
+    st.markdown("""
+    La courbe Precision–Recall permet d’évaluer plus finement la qualité des prédictions sur la classe minoritaire, ici la résiliation. 
+    On observe une bonne précision (environ 0.7 à 0.8) pour des valeurs de rappel intermédiaires, 
+    ce qui signifie que le modèle détecte correctement une part importante des clients à risque tout en limitant le nombre de fausses alertes. 
+    Comme souvent, lorsque le rappel augmente, la précision diminue, illustrant le compromis classique entre ces deux indicateurs.
+    """)
+
+

@@ -89,25 +89,3 @@ Les recommandations issues de ce travail sont les suivantes :
 3. **Surveiller les clients à forte facturation** et leur proposer des avantages personnalisés.  
 4. **Améliorer la qualité du service client**, en particulier pour les nouveaux abonnés, plus susceptibles de résilier.
 
----
-
-## Pistes d’amélioration
-
-- Intégrer des méthodes d’équilibrage de classes (par ex. **SMOTE**) afin de mieux gérer le déséquilibre entre churners et non-churners.  
-- Expérimenter d’autres modèles (par ex. **CatBoost**) pour affiner la comparaison.  
-- Déployer le modèle via une API pour faciliter son intégration dans les outils internes de gestion client.
-
----
-
-## Environnement
-
-- **Langage** : Python 3.10  
-- **Principales librairies** : pandas, numpy, scikit-learn, xgboost, lightgbm, matplotlib, plotly, streamlit  
-- **Visualisation** : Matplotlib / Plotly  
-- **Interface** : Streamlit
-
----
-
-## Auteur
-
-Projet réalisé par **Barnabé W.** dans le cadre d’un travail d’analyse et de modélisation du churn client.
